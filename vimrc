@@ -1,4 +1,4 @@
-"==========================================
+" ==========================================
 " Author:  wklken
 " Version: 9.1
 " Email: wklken@yeah.net
@@ -18,11 +18,11 @@
 "
 "       -> 插件配置和具体设置在vimrc.bundles中
 " Note: Don't put anything in your .vimrc you don't understand!
-"==========================================
+" ==========================================
 
 "==========================================
 " Initial Plugin 加载插件
-"==========================================
+" ==========================================
 
 " 修改leader键
 let mapleader = ','
@@ -228,12 +228,12 @@ set ttyfast
 set nrformats=
 
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-set relativenumber number
-au FocusLost * :set norelativenumber number
-au FocusGained * :set relativenumber
+" set relativenumber number
+" au FocusLost * :set norelativenumber number
+" au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
+autocmd InsertLeave * :set norelativenumber number
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber number
@@ -356,7 +356,7 @@ function! HideNumber()
   endif
   set number?
 endfunc
-nnoremap <F2> :call HideNumber()<CR>
+" nnoremap <F2> :call HideNumber()<CR>
 " F3 显示可打印字符开关
 nnoremap <F3> :set list! list?<CR>
 " F4 换行开关
@@ -368,9 +368,10 @@ nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
-
+" F7 打开nerdtree
+map <F7> :NERDTreeToggle<CR> 
 " disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
+" au InsertLeave * set nopaste
 
 " F5 set paste问题已解决, 粘贴代码前不需要按F5了
 " F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
@@ -455,8 +456,8 @@ autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
 " 使用方向键切换buffer
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
+ noremap <left> :bp<CR>
+ noremap <right> :bn<CR>
 
 
 " tab 操作
